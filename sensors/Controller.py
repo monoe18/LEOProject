@@ -2,22 +2,18 @@ import VEML7700
 import SCD41
 import time
 
-on = False
 rate = 1
 counter = 0
 #Sensors
-scd41 = None
-veml7700= None
+scd41 = SCD41.init()
+veml7700= VEML7700.init()
+on = True
 
 co2 = None
 temperature = None
 humidity = None
 lux = None
 light = None
-
-def setup():
-  scd41 = SCD41.init()
-  veml7700= VEML7700.init()
 
 def printSamples():
   print("Light: " , light)
@@ -26,8 +22,6 @@ def printSamples():
   print("Co2: ", co2)
   print("Humidity: " , humidity)
 
-
-setup()
 while(on):
   #sample CO2
   co2 = SCD41.sampleCo2(scd41)
