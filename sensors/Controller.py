@@ -16,11 +16,13 @@ lux = None
 light = None
 
 def printSamples():
-  print("Light: " , light)
-  print("Lux: ", lux)
-  print("Temperature: ", temperature)
-  print("Co2: ", co2)
-  print("Humidity: " , humidity)
+  print("Light: \t" , light)
+  print("Lux: \t", lux)
+  print("###############################")
+  print("Temperature: \t", temperature)
+  print("Co2: \t", co2)
+  print("Humidity: \t" , humidity)
+  print("#########################################################################")
 
 while(on):
   #sample CO2
