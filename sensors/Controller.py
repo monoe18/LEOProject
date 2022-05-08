@@ -15,6 +15,10 @@ humidity = None
 lux = None
 light = None
 
+def setup():
+  scd41 = SCD41.init()
+  veml7700= VEML7700.init()
+
 def printSamples():
   print("Light: " , light)
   print("Lux: ", lux)
@@ -22,6 +26,8 @@ def printSamples():
   print("Co2: ", co2)
   print("Humidity: " , humidity)
 
+
+setup()
 while(on):
   #sample CO2
   co2 = SCD41.sampleCo2(scd41)
