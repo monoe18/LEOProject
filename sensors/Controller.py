@@ -18,7 +18,6 @@ light = None
 def printSamples():
   print("Light: \t" , light)
   print("Lux: \t", lux)
-  print("###############################")
   print("Temperature: \t", temperature)
   print("Co2: \t", co2)
   print("Humidity: \t" , humidity)
