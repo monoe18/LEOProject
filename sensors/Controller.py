@@ -19,11 +19,11 @@ GPIO.setup(LED_PIN, GPIO.OUT)
 GPIO.output(LED_PIN, GPIO.LOW) 
 
 on = True
-co2 = None
-temperature = None
-humidity = None
-lux = None
-light = None
+co2 = 0
+temperature = 0
+humidity = 0
+lux = 0
+light = 0
 
 def printSamples():
   print("Light: \t" , light)
