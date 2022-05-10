@@ -2,7 +2,6 @@ PIN_SERVO = 12
 
 import RPi.GPIO as GPIO
 from time import sleep
-pwm = None
 
 def init():
     GPIO.setmode(GPIO.BCM)
@@ -10,8 +9,9 @@ def init():
     GPIO.output(PIN_SERVO, True)
     pwm=GPIO.PWM(PIN_SERVO, 50) # 50 Hz
     pwm.start(0)
+    return pwm
 
-def servo_angle(servo_angle):
+def servo_angle(servo_angle,pwm):
     duty = servo_angle / 18 + 2
     GPIO.output(PIN_SERVO, True)
     pwm.ChangeDutyCycle(duty)
