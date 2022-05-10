@@ -1,4 +1,4 @@
-PIN_SERVO = 3
+PIN_SERVO = 12
 
 import RPi.GPIO as GPIO
 from time import sleep
