@@ -1,12 +1,14 @@
 import VEML7700
 import SCD41
 import time
+import Servo
 
 rate = 1
 counter = 0
 #Sensors
 scd41 = SCD41.init()
 veml7700= VEML7700.init()
+servo = Servo.init()
 on = True
 
 co2 = None
@@ -39,3 +41,12 @@ while(on):
   
   if(counter == 1000):
     on = False
+
+
+def eval():
+  if(co2 < 450):
+    servo.servo_angle(0)
+  if(co2 >= 600):
+    servo.servo_angle(90)
+  if(co2 > 800): #full open
+    servo.servo_angle(180)
