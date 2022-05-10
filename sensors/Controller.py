@@ -3,7 +3,7 @@ import SCD41
 import time
 import Servo
 import RPi.GPIO as GPIO
-
+import mqtt_publish as my_mqtt
 
 LED_PIN = 22
 rate = 1
@@ -13,7 +13,7 @@ counter = 0
 servo = Servo.init()
 scd41 = SCD41.init()
 veml7700= VEML7700.init()
-
+client = my_mqtt.connect()
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(LED_PIN, GPIO.OUT)
 GPIO.output(LED_PIN, GPIO.LOW) 
@@ -32,6 +32,13 @@ def printSamples():
   print("Co2: \t", co2)
   print("Humidity: \t" , humidity)
   print("#########################################################################")
+
+  my_mqtt.publishData(client,"Light",light)
+  my_mqtt.publishData(client,"Lux",lux)
+  my_mqtt.publishData(client,"Temperature",temperature)
+  my_mqtt.publishData(client,"Co2",co2)
+  my_mqtt.publishData(client,"Humidity",humidity)
+
 
 
 def eval():
