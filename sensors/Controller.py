@@ -2,16 +2,23 @@ import VEML7700
 import SCD41
 import time
 import Servo
+import RPi.GPIO as GPIO
 
+
+LED_PIN = 22
 rate = 1
 counter = 0
+
 #Sensors
 servo = Servo.init()
 scd41 = SCD41.init()
 veml7700= VEML7700.init()
 
-on = True
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(LED_PIN, GPIO.OUT)
+GPIO.output(LED_PIN, GPIO.LOW) 
 
+on = True
 co2 = None
 temperature = None
 humidity = None
@@ -27,7 +34,6 @@ def printSamples():
   print("#########################################################################")
 
 
-
 def eval():
   if(lux <= 300):
     Servo.servo_angle(0,servo)
@@ -36,6 +42,10 @@ def eval():
   elif(lux > 600): 
     Servo.servo_angle(180,servo)
 
+  if(co2 >= 700):
+    GPIO.output(LED_PIN, GPIO.HIGH)
+  else:
+     GPIO.output(LED_PIN, GPIO.LOW)
 
 while(on):
   #sample CO2
@@ -55,3 +65,4 @@ while(on):
     eval()
   else:
     print("calibrating sensors")
+
