@@ -1,6 +1,6 @@
 import paho.mqtt.client as mqtt
 from flask import Flask
-MQTT_TOPIC = [("LEODataF22/Temperature"),("LEODataF22/Humidity"),("LEODataF22/Light"),("LEODataF22/Co2"),("LEODataF22/Lux")]
+MQTT_TOPIC = [("LEODataF22/Temperature",0),("LEODataF22/Humidity",0),("LEODataF22/Light",0),("LEODataF22/Co2",0),("LEODataF22/Lux",0)]
 temperature = 0
 humidity = 0
 light = 0
@@ -11,15 +11,21 @@ app = Flask(__name__)
 print("start life")
 def messageFunction (client, userdata, message):
     if(str(message.topic) == "LEODataF22/Temperature"):
+        global temperature 
         temperature = message.payload.decode("utf-8")
     elif (str(message.topic) == "LEODataF22/Humidity"):
+        global humidity
         humidity = message.payload.decode("utf-8")
     elif (str(message.topic) == "LEODataF22/Light"):
+        global light
         light = message.payload.decode("utf-8")
     elif (str(message.topic) == "LEODataF22/Co2"):
+        global Co2
         Co2 = message.payload.decode("utf-8")
     elif (str(message.topic) == "LEODataF22/Lux"):
+        global lux
         lux = message.payload.decode("utf-8")
+    print(message.payload.decode("utf-8"))
     
      
 ourClient = mqtt.Client("LEOFlaskF22")
@@ -32,4 +38,4 @@ print("life life ")
 
 @app.route("/")
 def hello_world():
-    return "<p>"+ "Temp: " + temperature + "</p> \n<p>"+ "Humi: " + humidity + "</p> \n<p>"+ "Light: "  + light + "</p> \n<p>"+ "Lux: " + lux + "</p> \n<p>"+ "Co2: " + Co2 + "</p> \n"
+    return "<p>"+ "Temp: " + str(temperature) + "</p> \n<p>"+ "Humi: " + str(humidity) + "</p> \n<p>"+ "Light: "  + str(light) + "</p> \n<p>"+ "Lux: " + str(lux) + "</p> \n<p>"+ "Co2: " + str(Co2) + "</p> \n"
