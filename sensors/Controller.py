@@ -6,7 +6,7 @@ import Servo
 rate = 1
 counter = 0
 #Sensors
-servo = Servo.init()
+Servo.init()
 scd41 = SCD41.init()
 veml7700= VEML7700.init()
 
@@ -30,11 +30,11 @@ def printSamples():
 
 def eval():
   if(lux <= 300):
-    servo.servo_angle(0)
+    Servo.servo_angle(0)
   elif(lux <= 600 and lux > 300):
-    servo.servo_angle(90)
+    Servo.servo_angle(90)
   elif(lux > 600): 
-    servo.servo_angle(180)
+    Servo.servo_angle(180)
 
 
 while(on):
@@ -50,7 +50,7 @@ while(on):
   time.sleep(rate)
 
 
-  if(counter >= 120):
+  if(counter >= 3):
     printSamples()
     eval()
   else:
