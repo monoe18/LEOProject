@@ -27,12 +27,13 @@ def printSamples():
   print("#########################################################################")
 
 
+
 def eval():
-  if(co2 < 450):
+  if(lux <= 300):
     servo.servo_angle(0)
-  if(co2 >= 600): #half open
+  elif(lux <= 600 and lux > 300):
     servo.servo_angle(90)
-  if(co2 > 800): #full open
+  elif(lux > 600): 
     servo.servo_angle(180)
 
 
