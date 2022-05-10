@@ -5,11 +5,12 @@ from time import sleep
 pwm = None
 
 def init():
-    GPIO.setmode(GPIO.BOARD)
+    GPIO.setmode(GPIO.BCM)
     GPIO.setup(PIN_SERVO, GPIO.OUT)
+    GPIO.output(PIN_SERVO, True)
     pwm=GPIO.PWM(PIN_SERVO, 50) # 50 Hz
     pwm.start(0)
-    
+
 def servo_angle(servo_angle):
     duty = servo_angle / 18 + 2
     GPIO.output(PIN_SERVO, True)
