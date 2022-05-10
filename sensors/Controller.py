@@ -60,7 +60,7 @@ while(on):
   time.sleep(rate)
 
 
-  if(counter >= 3):
+  if(counter >= 10):
     printSamples()
     eval()
   else:
