@@ -3,7 +3,7 @@ import SCD41
 import time
 import Servo
 import RPi.GPIO as GPIO
-import mqtt_publish as my_mqtt
+import sensors.mqtt_publish as my_mqtt
 
 LED_PIN = 22
 rate = 1
