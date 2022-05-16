@@ -11,7 +11,6 @@ while True:
     value2 = randint(0, 50)
     publish.single("group07/Temperature", value2 , hostname="3.73.44.177", port=1883, auth={'username':"group07", 'password':"raspberry"})
     print("Temperature: ", value2)
-    time.sleep(1)
     value3 = randint(0, 50)
     publish.single("group07/C02", value3 , hostname="3.73.44.177", port=1883, auth={'username':"group07", 'password':"raspberry"})
     print("C02: ", value3)
