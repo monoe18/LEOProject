@@ -2,7 +2,7 @@ import paho.mqtt.client as mqtt
 
 def connect():
     c = mqtt.Client("LEOPI")
-    c.connect("54.196.159.162", 1883)
+    c.connect("3.73.44.177", 1883)
     return c
 
 def publishData(c, topicName, data):

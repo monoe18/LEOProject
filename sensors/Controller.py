@@ -33,13 +33,13 @@ def printSamples():
   print("Humidity: \t" , humidity)
   print("#########################################################################")
 
+
+def publishSamples():
   my_mqtt.publishData(client,"Light",light)
   my_mqtt.publishData(client,"Lux",lux)
   my_mqtt.publishData(client,"Temperature",temperature)
   my_mqtt.publishData(client,"Co2",co2)
   my_mqtt.publishData(client,"Humidity",humidity)
-
-
 
 def eval():
   if(lux <= 300):
@@ -63,6 +63,7 @@ while(on):
   humidity = SCD41.sampleHumidity(scd41)
   #sample Light and Lux
   light, lux = VEML7700.sampleLight(veml7700)
+  publishSamples()
   counter += 1
   time.sleep(rate)
 
