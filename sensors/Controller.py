@@ -3,7 +3,8 @@ import SCD41
 import time
 import Servo
 import RPi.GPIO as GPIO
-import mqtt_publish as my_mqtt
+import sensors.mqtt_publish as my_mqtt
+
 
 LED_PIN = 22
 rate = 1
@@ -33,13 +34,13 @@ def printSamples():
   print("Humidity: \t" , humidity)
   print("#########################################################################")
 
+
+def publishSamples():
   my_mqtt.publishData(client,"Light",light)
   my_mqtt.publishData(client,"Lux",lux)
   my_mqtt.publishData(client,"Temperature",temperature)
   my_mqtt.publishData(client,"Co2",co2)
   my_mqtt.publishData(client,"Humidity",humidity)
-
-
 
 def eval():
   if(lux <= 300):
@@ -68,6 +69,7 @@ while(on):
 
 
   if(counter >= 10):
+    publishSamples()
     printSamples()
     eval()
   else:
