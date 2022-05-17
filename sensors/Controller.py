@@ -73,5 +73,5 @@ while(on):
     printSamples()
     eval()
   else:
-    print("calibrating sensors")
+    print("Calibrating sensors..")
 
