@@ -63,12 +63,12 @@ while(on):
   humidity = SCD41.sampleHumidity(scd41)
   #sample Light and Lux
   light, lux = VEML7700.sampleLight(veml7700)
-  publishSamples()
   counter += 1
   time.sleep(rate)
 
 
   if(counter >= 10):
+    publishSamples()
     printSamples()
     eval()
   else:
