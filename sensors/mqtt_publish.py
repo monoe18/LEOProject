@@ -7,4 +7,4 @@ def connect():
 
 def publishData(c, topicName, data):
     print("sending data to: " + "group07/"+topicName)
-    c.publish("group07/"+topicName, data, auth={'username':"group07", 'password':"raspberry"}) 
+    c.publish("group07/"+topicName, data) 
