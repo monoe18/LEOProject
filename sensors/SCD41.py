@@ -1,7 +1,7 @@
 import time
 import board
 import adafruit_scd4x
-
+ 
 def init():
     i2c = board.I2C()
     scd4x = adafruit_scd4x.SCD4X(i2c)

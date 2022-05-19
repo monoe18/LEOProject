@@ -1,5 +1,8 @@
 import paho.mqtt.client as mqtt
 from flask import Flask
+
+#Testing with Flask server but doesn't support live data. Doesn't work with current state of the system.
+#The subscribing client currently exists on the AWS server environment
 MQTT_TOPIC = [("LEODataF22/Temperature",0),("LEODataF22/Humidity",0),("LEODataF22/Light",0),("LEODataF22/Co2",0),("LEODataF22/Lux",0)]
 temperature = 0
 humidity = 0

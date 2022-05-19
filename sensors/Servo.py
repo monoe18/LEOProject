@@ -10,7 +10,7 @@ def init():
     pwm=GPIO.PWM(PIN_SERVO, 50) # 50 Hz
     pwm.start(0)
     return pwm
-
+ 
 
 def servo_angle(servo_angle,pwm):
     duty = servo_angle / 18 + 2
